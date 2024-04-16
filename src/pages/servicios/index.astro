@@ -1,0 +1,45 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { ServiciosCarruselReact2 } from '@/components/ServiciosCarruselReact2.jsx'
+
+const nave = '/videos/videosServicios/vTroqueladora.webm'
+const lunes = '/videos/videosServicios/vPegadoraMarron.webm'
+const nav = '/videos/videosServicios/vPloter.webm'
+const cielo2 = '/videos/videosServicios/vImpresora.webm'
+const naveThumb = '/thumbnails_videos/impresora.png'
+const naveThumb1 = '/thumbnails_videos/troquelado.png'
+const naveThumb2 = '/thumbnails_videos/pegado.png'
+const naveThumb3 = '/thumbnails_videos/corte.png'
+const textos = [
+	'Impresión flexográfica, digital y offset',
+	'Troquelado plano, rotativo y corte digital',
+	'Pegado de cajas, estuches y bandejas con 1, 3 y 4 puntos',
+	'Diseño gráfico, técnico y desarrollo de prototipos',
+]
+---
+
+<Layout title='Sobre nosotros'>
+	<div
+		class='bodyIndex rounded-lg flex overflow-y-auto justify-center items-center'
+	>
+		<ServiciosCarruselReact2
+			client:load
+			cielo2={cielo2}
+			nave={nave}
+			lunes={lunes}
+			nav={nav}
+			video={true}
+			naveThumb={naveThumb}
+			naveThumb1={naveThumb1}
+			naveThumb2={naveThumb2}
+			naveThumb3={naveThumb3}
+			textos={textos}
+		/>
+	</div>
+</Layout>
+
+<style>
+	:global(.light) .bodyIndex {
+		color: #333;
+	}
+</style>

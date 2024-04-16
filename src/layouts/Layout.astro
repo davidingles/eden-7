@@ -1,0 +1,261 @@
+---
+import AsideMenu from '@/components/AsideMenu.astro'
+import FooterMenu from '@/components/FooterMenu.astro'
+import Footer from '@/components/Footer.astro'
+import HeaderMenu from '@/components/HeaderMenu.astro'
+import NavbarMovil from '@/components/NavbarMovil.astro'
+interface Props {
+	title: string
+	imagenFondo: boolean
+}
+
+const { title, imagenFondo } = Astro.props
+---
+
+<html lang='es'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta
+			name='description'
+			content='Astro description'
+		/>
+		<meta
+			name='viewport'
+			content='width=device-width'
+		/>
+		<link
+			rel='icon'
+			type='image/svg+xml'
+			href='/favicon.auxiliar.svg'
+		/>
+		<meta
+			name='generator'
+			content={Astro.generator}
+		/>
+		<title>{title}</title>
+	</head>
+	<body class='body'>
+		<!-- //!!!: ASIDE ================================= -->
+		<div class='asideMenu p-2 [grid-area:aside] flex flex-col'>
+			<AsideMenu />
+		</div>
+		<div class='navbar__movil [grid-area:aside] z-50'>
+			<NavbarMovil />
+		</div>
+		<!-- //!!!:BODY ================================= -->
+		<div class='mainMenu [grid-area:main] overflow-y-auto relative'>
+			<div class='header-menu'>
+				<HeaderMenu />
+			</div>
+			<!-- //?: header=================================== -->
+			<main>
+				<div class=''>
+					<slot />
+				</div>
+				{
+					!imagenFondo && (
+						<img
+							class='imagen-de-fondo'
+							src='/img/nave.jpg'
+							alt=''
+						/>
+					)
+				}
+			</main>
+		</div>
+		<!-- //!!!: FOOTER ================================= -->
+		<div class='[grid-area:footer] bg-slate-800'>
+			<FooterMenu />
+		</div>
+		<div class='[grid-area:aviso] bg-black flex flex-col'>
+			<Footer />
+		</div>
+	</body>
+
+	<style is:global>
+		:root {
+			--auxi1: rgb(222, 171, 18);
+			--auxi2: rgb(0, 128, 72);
+			color-scheme: light dark;
+			background-color: light-dark(rgb(222, 222, 222), rgb(33, 33, 33));
+			color: light-dark(var(--auxi2), var(--auxi1));
+		}
+		.header-menu {
+			/* border: 1px solid red; */
+			height: 66px;
+			display: flex;
+			justify-content: center;
+		}
+		@media (prefers-color-scheme: dark) {
+			.imagen-de-fondo {
+				opacity: 0.4;
+				position: absolute;
+				top: 66px;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: -1;
+				overflow-y: auto;
+				min-width: auto;
+				min-height: 100vh;
+				filter: blur(6px) grayscale(0.5) brightness(0.5) contrast(1.5)
+					saturate(0.5);
+				aspect-ratio: 16/9;
+				object-fit: cover;
+			}
+		}
+		@media (prefers-color-scheme: light) {
+			.imagen-de-fondo {
+				opacity: 0.4;
+				position: absolute;
+				top: 66px;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: -1;
+				overflow-y: auto;
+				min-width: auto;
+				min-height: 100vh;
+				filter: grayscale(0.2) contrast(1.5) blur(4px) saturate(0.4)
+					brightness(1.1);
+				aspect-ratio: 16/9;
+				object-fit: cover;
+			}
+		}
+
+		:global(html) {
+			font-family: 'CircularStd', system-ui, sans-serif;
+			background-color: #222;
+			color: white;
+			/* background-size: 224px; */
+			scroll-behavior: smooth;
+			scrollbar-color: var(--auxi1) black;
+			scrollbar-width: thin;
+		}
+		html {
+			font-family: 'CircularStd', system-ui, sans-serif;
+			background-color: #222;
+			color: white;
+			/* background-size: 224px; */
+			scroll-behavior: smooth;
+			scrollbar-color: var(--auxi1) black;
+			scrollbar-width: thin;
+		}
+		::selection {
+			background-color: var(--auxi1);
+			color: white;
+		}
+		body {
+			display: grid;
+			grid-template-areas:
+				'aside main main'
+				'footer footer footer'
+				'aviso aviso aviso';
+			grid-template-columns: 225px 1fr;
+			grid-template-rows: 1fr auto;
+		}
+
+		@media screen and (max-width: 768px) {
+			body {
+				grid-template-areas:
+					'aside'
+					'main'
+					'footer'
+					'aviso';
+				grid-template-columns: auto;
+				grid-template-rows: 222px 1fr auto auto;
+			}
+			.asideMenu {
+				display: none;
+			}
+			.mainMenu {
+				translate: 0 -11rem;
+				height: 100vh;
+			}
+			.navbar__movil {
+				position: relative;
+				z-index: 99;
+			}
+		}
+		@media screen and (min-width: 769px) {
+			.navbar__movil {
+				display: none;
+			}
+		}
+
+		.asideMenu {
+			height: calc(100vh - 104px);
+			background-color: light-dark(rgb(222 222 222), rgb(33 33 33));
+		}
+		.mainMenu {
+			height: calc(100vh - 104px);
+			/* background-color: #333; */
+			scrollbar-width: thin;
+		}
+
+		.bordeRojo {
+			border: 1px solid rgb(255, 0, 0);
+		}
+		.bordeVerde {
+			border: 1px solid rgb(0, 255, 0);
+		}
+		.tipografia1 {
+			font-family: 'ErasITC', 'CircularStd', system-ui, sans-serif;
+		}
+		.tipografía2 {
+			font-family: 'CircularStd', system-ui, sans-serif;
+		}
+		.colorUno {
+			color: var(--auxi1);
+		}
+		.colorDos {
+			color: var(--auxi2);
+		}
+
+		@font-face {
+			font-family: 'ErasITC';
+			src: url('/fonts/ITC Eras Demi.ttf'); /* format('ttf'); */
+			/* font-style: normal;
+				font-display: swap; */
+		}
+		@font-face {
+			font-family: 'CircularStd';
+			src: url('/fonts/CircularStd-Medium.woff2') format('woff2');
+			font-weight: 500;
+			font-style: normal;
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'CircularStd';
+			src: url('/fonts/CircularStd-Book.woff2') format('woff2');
+			font-weight: 400;
+			font-style: normal;
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'CircularStd';
+			src: url('/fonts/CircularStd-Light.woff2') format('woff2');
+			font-weight: 300;
+			font-style: normal;
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'CircularStd';
+			src: url('/fonts/CircularStd-Bold.woff2') format('woff2');
+			font-weight: 700;
+			font-style: normal;
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'CircularStd';
+			src: url('/fonts/CircularStd-Black.woff2') format('woff2');
+			font-weight: 900;
+			font-style: normal;
+			font-display: swap;
+		}
+	</style>
+</html>

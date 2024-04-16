@@ -1,0 +1,95 @@
+---
+import Buscador from '../components/icons/Buscador.astro'
+---
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		document.getElementById('theme').addEventListener('click', () => {
+			document.querySelector('html').style.colorScheme === 'light'
+				? (document.querySelector('html').style.colorScheme = 'dark')
+				: (document.querySelector('html').style.colorScheme = 'light')
+		})
+	})
+	const searchInput = document.getElementById('input') as HTMLInputElement
+	searchInput.addEventListener('input', () => {
+		const valor = searchInput.value.toLowerCase()
+		console.log(valor)
+	})
+</script>
+
+<div class='divToggleTheme flex flex-row w-full'>
+	<p class='header-menu'>Auxiliar Manipuladora del Cartón</p>
+	<form
+		class='search'
+		action=''
+	>
+		<Buscador />
+		<input
+			id='input'
+			class='input'
+			type='text'
+			autofocus
+			placeholder='escribe la referencia'
+		/>
+	</form>
+	<button
+		class='theme'
+		id='theme'
+	>
+		<img
+			src='/public/svg/theme.svg'
+			alt='theme'
+		/>
+	</button>
+</div>
+
+<style>
+	.search {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+	@media (prefers-color-scheme: light) {
+		.input {
+			border: black solid 1px;
+		}
+	}
+	@media (prefers-color-scheme: dark) {
+		.input {
+			border: white solid 1px;
+		}
+	}
+
+	.input {
+		background-color: rgb(255, 255, 255, 0.05);
+		color: white;
+		height: 33px;
+		border-radius: 9px;
+		padding-left: 1rem;
+	}
+	.header-menu {
+		font-family: ErasITC;
+		font-size: 1.5rem;
+		text-wrap: nowrap;
+		display: flex;
+		flex: 1;
+		justify-content: center;
+		align-items: center;
+		color: var(--auxi1);
+		font-size: 1.5rem;
+	}
+	@media (min-width: 1024px) {
+		.header-menu {
+			font-size: 1.7rem;
+		}
+	}
+
+	@media (min-width: 1536px) {
+		.header-menu {
+			font-size: 2rem;
+		}
+	}
+	.theme {
+		padding: 0.5rem;
+	}
+</style>

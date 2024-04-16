@@ -1,0 +1,71 @@
+.mena,
+.david {
+  display: flex;
+  flex-direction: row;
+  width: 180px;
+  align-items: center;
+  border-radius: .4rem;
+  border: solid 1px black;
+  color: light-dark(rgb(33 33 33), rgb(222 222 222));
+  transition: all 0.5s;
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  position: relative;
+  transition: 0.5s;
+  background-color: light-dark(rgb(229 229 229), rgb(22 22 22));
+}
+
+@media screen and (max-width: 768px) {
+
+  .mena,
+  .david {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.mena:hover {
+  transition: all 0.3s ease-in-out;
+  background-color: light-dark(rgb(244 244 244), rgb(22 22 22));
+}
+
+.menadiv {
+  margin-top: 11px;
+  margin-bottom: 11px;
+  transition: all 0.5s;
+  position: relative;
+  transition: 0.5s;
+}
+
+.menadiv:after {
+  content: '>>';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  translate: 34px 0px;
+  right: 20px;
+  transition: 0.5s;
+
+}
+
+.menadiv:hover:after {
+  right: 0;
+  opacity: 1;
+
+}
+
+.nombre {
+  color: light-dark(var(--auxi2), var(--auxi1));
+}
+
+.david {
+  filter: brightness(1);
+  color: light-dark(var(--auxi2), var(--auxi1));
+  border-color: light-dark(var(--auxi2), var(--auxi1));
+  background-color: light-dark(rgb(244 244 244), rgb(22 22 22));
+}

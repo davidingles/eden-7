@@ -1,0 +1,248 @@
+---
+import BookItem from './BookItem.astro'
+import { books } from '../data/books.js'
+import BtnEstrellasEstuches from '../components/botones/BtnEstrellasEstuches.astro'
+import BtnEstrellasExpositores from '../components/botones/BtnEstrellasExpositores.astro'
+import BtnEstrellasCajas from '../components/botones/BtnEstrellasCajas.astro'
+import Buscador from '../components/icons/Buscador.astro'
+---
+
+<script is:inline>
+	document.addEventListener('DOMContentLoaded', (event) => {
+		document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+			anchor.addEventListener('click', function (e) {
+				e.preventDefault()
+
+				document.querySelector(this.getAttribute('href')).scrollIntoView({
+					behavior: 'smooth',
+				})
+			})
+		})
+	})
+	const handleInput = () => {
+		console.log('valor')
+	}
+</script>
+<div
+	id='home'
+	class='mt-10 mb-2 flex flex-col md:flex-row'
+>
+	<a
+		class='opts p-4'
+		href='#estuches'
+	>
+		<BtnEstrellasEstuches />
+	</a>
+	<a
+		class='opts p-4'
+		href='#cajas'
+	>
+		<BtnEstrellasCajas />
+	</a>
+	<a
+		class='opts p-4'
+		href='#expositores'
+	>
+		<BtnEstrellasExpositores />
+	</a>
+</div>
+<div
+	id='estuches'
+	class='arrow'
+>
+	Estuches
+</div>
+<a
+	href='#home'
+	class='subir'
+>
+	<img
+		class='flecha'
+		src='./svg/flechaSube.svg'
+		alt='flecha'
+	/>
+</a>
+<div class='linea-blanca'></div>
+<div
+	class='seccion grid sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center m-auto'
+>
+	{
+		books
+			.filter((book) => book.categoria === 'Bandejas')
+			.map((book) => {
+				return (
+					<ul class='card aspect-square rounded-lg'>
+						<BookItem
+							id={book.id}
+							title={book.title}
+							img={book.img}
+							referencia={book.referencia}
+						/>
+					</ul>
+				)
+			})
+	}
+</div>
+
+<div
+	id='cajas'
+	class='arrow'
+>
+	Cajas
+</div>
+<a
+	href='#home'
+	class='subir'
+>
+	<img
+		class='flecha'
+		src='./svg/flechaSube.svg'
+		alt='flecha'
+	/>
+</a>
+<div class='linea-blanca'></div>
+
+<div
+	class='seccion grid sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center m-auto'
+>
+	{
+		books
+			.filter((book) => book.categoria === 'Cajas')
+			.map((book) => {
+				return (
+					<ul class='card'>
+						<BookItem
+							id={book.id}
+							title={book.title}
+							img={book.img}
+							referencia={book.referencia}
+						/>
+					</ul>
+				)
+			})
+	}
+</div>
+
+<div
+	id='expositores'
+	class='arrow'
+>
+	Expositores
+</div>
+<a
+	href='#home'
+	class='subir'
+>
+	<img
+		class='flecha'
+		src='./svg/flechaSube.svg'
+		alt='flecha'
+	/>
+</a>
+<div class='linea-blanca'></div>
+
+<div
+	class='seccion grid sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center m-auto'
+>
+	{
+		books
+			.filter((book) => book.categoria === 'expositor')
+			.map((book) => {
+				return (
+					<ul class='card'>
+						<BookItem
+							id={book.id}
+							title={book.title}
+							img={book.img}
+							referencia={book.referencia}
+						/>
+					</ul>
+				)
+			})
+	}
+</div>
+
+<style>
+	.search {
+		display: none;
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		display: flex;
+		gap: 1rem;
+	}
+	.input {
+		border: white solid 2px;
+		background-color: rgb(255, 255, 255, 0.05);
+		color: white;
+		height: 66px;
+		border-radius: 9px;
+		padding-left: 1rem;
+	}
+	.flecha {
+		display: inline;
+		width: 22px;
+		height: 22px;
+		margin-left: 1rem;
+	}
+	.flecha:hover {
+		transition: 0.3s;
+		scale: 1.2;
+		translate: 0 -3px;
+	}
+	.arrow {
+		display: inline;
+		margin-left: 2rem;
+		padding: 1rem;
+	}
+	.seccion {
+		margin-bottom: 1rem;
+	}
+	.subir {
+		display: inline;
+	}
+	@media (prefers-color-scheme: light) {
+		.linea-blanca {
+			border-top: 1px solid black;
+		}
+	}
+	@media (prefers-color-scheme: dark) {
+		.liena-blanca {
+			border-top: 1px solid white;
+		}
+	}
+	.linea-blanca {
+		margin-top: 10px;
+		margin-bottom: 20px;
+	}
+	@media (prefers-color-scheme: light) {
+		.card {
+			box-shadow: 8px 8px 15px -8px rgba(30, 30, 30, 0.5);
+			border: white solid 1px;
+		}
+	}
+	@media (prefers-color-scheme: dark) {
+		.card {
+			box-shadow: 8px 8px 15px -8px rgba(0, 0, 0, 0.5);
+			border: black solid 1px;
+		}
+	}
+	.card {
+		width: auto;
+		height: auto;
+	}
+	.card:hover {
+		transition: all 0.3s ease-in-out;
+		transform: translateY(-5px);
+		filter: brightness(1.05);
+		box-shadow: 2px 2px 8px -3px rgba(22, 22, 22, 0.5);
+	}
+
+	.opts {
+		color: white;
+		font-weight: bold;
+	}
+	.opts:hover {
+		text-decoration: underline;
+	}
+</style>

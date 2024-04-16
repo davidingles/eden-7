@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "baseUrl": "D:/_DIL/dev/eden-7",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@/components/*": [
+        "src/components/*"
+      ],
+      "@/layouts/*": [
+        "src/layouts/*"
+      ],
+      "@/pages/*": [
+        "src/pages/*"
+      ],
+      "@/svg/*": [
+        "public/svg/*"
+      ],
+      "@/img/*": [
+        "public/img/*"
+      ]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  },
+  "extends": "astro/tsconfigs/base"
+}

@@ -1,0 +1,85 @@
+---
+import { books } from '../../data/books.js'
+import { fade } from 'astro:transitions'
+import LayoutCatalogo from '../../layouts/LayoutCatalogo.astro'
+import BtnEstrellas from '../../components/botones/BtnEstrellas.astro'
+import BtnEstrellasGirar from '@/components/botones/BtnEstrellasGirar.astro'
+import BtnEstrellasVideo from '@/components/botones/BtnEstrellasVideo.astro'
+import BtnEstrellasCatalogo from '@/components/botones/BtnEstrellasCatalogo.astro'
+
+const { giro } = Astro.params
+console.log(giro)
+const bookData = books.find((b) => b.id === giro)
+if (!bookData) {
+	return Astro.redirect('/404')
+}
+
+export function getStaticPaths() {
+	return books.map((book) => ({
+		params: {
+			giro: book.id,
+		},
+	}))
+}
+---
+
+<LayoutCatalogo title={bookData.id}>
+	<main class='flex flex-col w-full relative'>
+		<div class='absolute top-4 lef-4 z-20 flex flex-col'>
+			<nav class='dos-botones'>
+				<a
+					id='
+						anchor'
+					href='/catalogo'
+				>
+					<BtnEstrellasCatalogo />
+				</a>
+				<a
+				id='
+				anchor'
+				href={`/animacion/${bookData.id}`}
+			>
+				<BtnEstrellasGirar />
+			</a>
+			<a
+			id='
+			anchor'
+			href={`/${bookData.id}`}
+		>
+			<BtnEstrellasVideo />
+		</a>
+				<div class='px-4'>
+					<!-- <p>{bookData.opinion}</p> -->
+					<p>Referencia: {bookData.referencia}</p>
+				</div>
+			</nav>
+		</div>
+
+
+		<div
+			transition:name='hero'
+			transition:animate={fade({ duration: '1s' })}
+		>
+			<img
+				transition:animate={fade({ duration: '1s' })}
+				transition:name='david'
+				class={`w-full h-screen object-contain`}
+				src={bookData.img}
+				alt={bookData.title}
+			/>
+		</div>
+	</main>
+</LayoutCatalogo>
+
+
+<style>
+	.dos-botones{
+		display: flex;
+		gap: 1rem;
+	}
+	@media screen and (max-width: 748px) {
+		.dos-botones{
+			flex-direction: column;
+		}
+	}
+</style>

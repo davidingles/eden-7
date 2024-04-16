@@ -1,0 +1,51 @@
+---
+import LayoutInicio from '../layouts/LayoutInicio.astro'
+// import Video from '@/components/Video.astro'
+// import VideoReactPrincipal from '@/components/VideoReactPrincipal.jsx'
+import V3DReactPrincipal from '@/components/V3DReactPrincipal.astro'
+// const videosPrincipales = ["videoCaballete", "video1G0011", "v1P0221", "videoCazoletas"]
+---
+
+<!-- <Layout title='Auxiliar Manipuladora del Cartón relative'>
+	{}
+	<div class='h-full w-2/3 m-auto  max-h-full'>
+		<Video
+			autoplay={true}
+			id='cajas'
+			src='/videos/montajes/v__1g0011.webm'
+		/>
+	</div>
+</Layout> -->
+
+
+<!-- <Layout title='Auxiliar Manipuladora del Cartón relative'>
+	<div class='h-full w-2/3 m-auto  max-h-full'>
+		{videosPrincipales.map( v => (
+			<Video
+			autoplay={true}
+			id={v}
+			src={`/videos/montajes/${v}.webm`}
+			/>
+		))}
+	</div>
+</Layout> -->
+
+
+<LayoutInicio title='Auxiliar Manipuladora del Cartón relative'>
+
+	<div class='div-3D'>
+		<!-- <VideoReactPrincipal client:load /> -->
+		<V3DReactPrincipal/>
+	
+	</div>
+</LayoutInicio>
+
+<style>
+	.div-3D{
+		translate: 0px -111px;
+		width: 100%;
+		height: 100%;
+		margin: auto;
+		max-height: 100%;
+	}
+</style>

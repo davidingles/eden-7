@@ -1,0 +1,35 @@
+---
+import { fade } from 'astro:transitions'
+export interface Props {
+	id: string
+	title: string
+	img: string
+	referencia: string
+}
+
+const { id, title, img, referencia = '_' } = Astro.props
+---
+
+<a href=`giro/${id}`>
+	<p>{referencia}</p>
+	<img
+		transition:animate={fade({ duration: '1s' })}
+		transition:name='david'
+		class='aspect-[500/500] object-cover rounded-lg pegatina'
+		src=`${img}`
+		alt=`${title}`
+	/>
+</a>
+
+		<style>
+			.pegatina:hover {
+				filter: brightness(1.05);
+			}
+			.pegatina {
+				background-color: rgb(150, 205, 238, 0.5);
+				/* border: solid 1px white; */
+			}
+
+		</style>
+	</body>
+</html>

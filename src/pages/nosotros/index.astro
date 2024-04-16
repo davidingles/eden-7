@@ -1,0 +1,179 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { ServiciosCarruselReact2 } from '@/components/ServiciosCarruselReact2.jsx'
+
+const cielo2 = '/img/cielo2.jpg'
+const nave = '/img/nave.jpg'
+const lunes = '/img/lunes.jpg'
+const nav = '/img/nav.jpg'
+
+const naveThumb = '/img/cielo2.jpg'
+const naveThumb1 = '/img/nave.jpg'
+const naveThumb2 = '/img/lunes.jpg'
+const naveThumb3 = '/img/nav.jpg'
+const textos = [
+	'Empresa fundada en 1995, avalada con una gran experiencia en el sector del cartón.',
+	'Auxiliar Manipuladora del Cartón va evolucionando para cubrir las necesidades de sus clientes',
+	'Todas las personas que trabajan directa o indirectamente tienen el espíritu de aceptar los retos para adaptarse aun mercado más competitivo y exigente.',
+	'Tras la incorporación de nuevas generaciones seguiremos avanzando juntos.',
+]
+---
+
+<Layout title='Sobre nosotros'>
+	<main class='flex flex-col'>
+		<div
+			class='cajaCarrusel'
+		>
+			<ServiciosCarruselReact2
+				client:load
+				cielo2={cielo2}
+				nave={nave}
+				lunes={lunes}
+				nav={nav}
+				video={true}
+				naveThumb1={naveThumb1}
+				naveThumb={naveThumb}
+				naveThumb3={naveThumb3}
+				naveThumb2={naveThumb2}
+				textos={textos}
+			/>
+		</div>
+		<hr>
+		<div class='barra'>
+			<h2>Políticas de Empresa</h2>
+			<section class='section'>
+				<a
+					class='anchor'
+					target='_blank'
+					href='/Plan de Movilidad.pdf'
+				>
+					<img
+						src='/svg/folioAux-01.svg'
+						alt='portada plan de movilidad'
+					/>
+					<p>Plan de Movilidad</p>
+				</a>
+				<a
+					class='anchor'
+					target='_blank'
+					href='/Plan de Movilidad.pdf'
+				>
+					<img
+						src='/svg/logoPdf-01.svg'
+						alt='portada plan de movilidad'
+					/>
+					<p>Código Ético</p>
+				</a>
+				<a
+					class='anchor'
+					target='_blank'
+					href='/Plan de Movilidad.pdf'
+				>
+					<img
+						src='/svg/logoPdf-01.svg'
+						alt='portada plan de movilidad'
+					/>
+					<p>Política de Calidad</p>
+				</a>
+				<a
+					class='anchor'
+					target='_blank'
+					href='/roadSafetyCharter.png'
+				>
+					<img
+						src='/roadSafetyCharter.png'
+						alt='sello del Road Safety Charter'
+					/>
+					<p>Road Safety Charter</p>
+				</a>
+			</section>
+			<section class='flex flex-col md:flex-row pr-12'></section>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.cajaCarrusel{
+		width: 100%;
+		max-width: 100vw;
+		height: 100%;
+		max-height: 100vh;
+	}
+	hr{
+		margin-top: 3rem;
+	}
+	.barra {
+		margin: 1rem 0;
+		padding: 1rem;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+		color: white;
+		padding-inline: 1rem;
+		z-index: 3;
+		background-color: rgb(55, 55, 55);
+	}
+	.barra h2 {
+		font-size: 1.5rem;
+		color: white;
+		margin: 1rem;
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+	.section {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		gap: 1rem;
+		width: 100%;
+		/* border: 1px solid white; */
+
+	}
+	.anchor {
+		padding: 0.5rem;
+		width: 111px;
+		height: 80px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: 1rem;
+		text-align: center;
+		/* border: 1px solid white; */
+
+	}
+	.anchor p{
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 1rem;
+		/* border: 1px solid white; */
+	}
+	.barra a {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 111px;
+		height: 100%;
+		/* border: 1px solid white; */
+	}
+	.anchor img {
+		border-radius: 10%;
+		width: 100%;
+		height: 88px;
+		object-fit: contain;
+		box-shadow: 2px 2px 9px 1px rgb(0 0 0 / 50%);
+		border-radius: 10%;
+		/* border: 1px solid white; */
+	}
+	.anchor img:hover {
+		transform: translateY(-3px) scale(1.05);
+		transition: transform 0.5s;
+	}
+</style>

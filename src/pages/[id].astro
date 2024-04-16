@@ -1,0 +1,95 @@
+---
+import { books } from '../data/books.js'
+import LayoutCatalogo from '../layouts/LayoutCatalogo.astro'
+import BtnEstrellasCatalogo from '../components/botones/BtnEstrellasCatalogo.astro'
+import BtnEstrellasImagen from '../components/botones/BtnEstrellasImagen.astro'
+import BtnEstrellasGirar from '../components/botones/BtnEstrellasGirar.astro'
+import ReactThreeModel3D from '../components/ReactThreeModel3D.jsx'
+import { fade } from 'astro:transitions'
+
+const { id } = Astro.params
+console.log(id)
+const bookData = books.find((b) => b.id === id)
+if (!bookData) {
+	return Astro.redirect('/404')
+}
+
+export function getStaticPaths() {
+	return books.map((book) => ({
+		params: {
+			id: book.id,
+		},
+	}))
+}
+---
+
+<LayoutCatalogo title={bookData.id}>
+	<main class='flex flex-col w-full relative'>
+		<div class='absolute top-4 lef-4 z-20 flex flex-col'>
+			<nav class='dos-botones '>
+				<a
+					id='
+					anchor'
+					href='/catalogo'
+				>
+					<BtnEstrellasCatalogo />
+				</a>
+				<a
+					id='
+					anchor'
+					href={`giro/${bookData.id}`}
+				>
+					<BtnEstrellasImagen />
+				</a>
+				<a
+					id='
+					anchor'
+					href={`./animacion/${bookData.id}`}
+				>
+					<BtnEstrellasGirar />
+				</a>
+				<div class='px-4'>
+					<p>{bookData.opinion}</p>
+					<span>{bookData.title}</span>
+				</div>
+			</nav>
+		</div>
+
+		<div
+			transition:name='dav'
+			transition:name='hero'
+			transition:animate={fade({ duration: '1s' })}
+			class='w-full h-screen'
+		>
+			{
+				bookData.three && (
+					<ReactThreeModel3D
+						client:load
+						escala={bookData.escala}
+						posicion={bookData.posicion}
+						url={bookData.glbSource}
+					/>
+				)
+			}
+			{
+				!bookData.three && (
+					<div class='w-full h-full flex justify-center items-center'>
+						<h1 class='text-orange-400 text-5xl'>No hay modelo 3D</h1>
+					</div>
+				)
+			}
+		</div>
+	</main>
+</LayoutCatalogo>
+
+<style>
+	.dos-botones{
+		display: flex;
+		gap: 1rem;
+	}
+	@media screen and (max-width: 748px) {
+		.dos-botones{
+			flex-direction: column;
+		}
+	}
+</style>

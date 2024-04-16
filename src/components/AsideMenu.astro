@@ -1,0 +1,34 @@
+---
+import MenuReact from '@/components/menuReact.jsx'
+import Logo from '@/components/icons/LogoAuxCompleto.astro'
+---
+
+<div class='aside-menu rounded-lg flex flex-col'>
+	<div class='p-4 md:flex justify-center m-2 logo-animation3 hidden'>
+		<Logo />
+	</div>
+	<div class='m-2'>
+		<MenuReact
+			client:visible
+			transition:name='menu-react'
+			transition:persist
+		/>
+	</div>
+</div>
+
+<style>
+	.aside-menu {
+		background-color: light-dark(rgb(222, 222, 222), rgb(33 33 33));
+	}
+	@keyframes logoFadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+	.logo-animation3 {
+		animation: logoFadeIn 1.5s ease-in-out;
+	}
+</style>
