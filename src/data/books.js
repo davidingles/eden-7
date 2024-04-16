@@ -78,7 +78,7 @@ export const books = [
 		three: 'embargos',
 		video: '/videos/montajes/video_embargo.webm',
 		scaleVideo: 1.5,
-		referencia: '222'
+		referencia: '2801'
 
 	},
 	{
@@ -173,7 +173,7 @@ export const books = [
 		author: 'Vicente Latorre',
 		three: 'ExpositorDM',
 		categoria: 'expositor',
-		referencia: '333'
+		referencia: '2802'
 
 	},
 	{
@@ -218,7 +218,7 @@ export const books = [
 		author: 'Vicente Latorre',
 		three: 'TroquelMesaFeria',
 		categoria: 'expositor',
-		referencia: '444'
+		referencia: '2808'
 	},
 	{
 		id: 'troquelMuebleMadera',
@@ -228,7 +228,7 @@ export const books = [
 		author: 'Vicente Latorre',
 		three: 'TroquelMuebleMadera',
 		categoria: 'expositor',
-		referencia: '777'
+		referencia: '2803'
 	},
 
 	{
@@ -244,7 +244,7 @@ export const books = [
 		posicion: .3,
 		tamaño: 1,
 		glbSource: '/gltf/caballete-03.glb',
-		referencia: '999'
+		referencia: '2804'
 	},
 
 
@@ -276,7 +276,7 @@ export const books = [
 		posicion: -.5,
 		tamaño: 1,
 		glbSource: '/gltf/arbol y ciervo.gltf',
-		referencia: '555'
+		referencia: '2809'
 	},
 
 	{
@@ -292,7 +292,7 @@ export const books = [
 		glbSource: '/gltf/ami2.glb',
 		posicion: -.5,
 		tamaño: 1,
-		referencia: '888'
+		referencia: '2805'
 	},
 	{
 		id: 'donaciones',
@@ -306,7 +306,7 @@ export const books = [
 		escala: .3,
 		posicion: -.8,
 		tamaño: 1,
-		referencia: '666'
+		referencia: '2806'
 	},
 	{
 		id: 'grafiter',
@@ -330,7 +330,7 @@ export const books = [
 		author: 'Vicente Latorre',
 		three: 'Troquel1g0102',
 		categoria: 'expositor',
-		referencia: 'Cono palé',
+		referencia: '2807',
 		// video: '/videos/montajes/2410.webm',
 		glbSource: '/gltf/cono.glb',
 		posicion: .3,
